@@ -1,0 +1,33 @@
+criar e ativar ambiente virtual
+
+c: \python -m venv venv
+c: \python>cd venv/scripts
+c: \python\venv\scripts>activate
+
+voltar a pasta anterior
+
+cd..
+
+rodar o codigo
+
+python manage.py runserver
+
+----------------------------------------------
+
+login admin
+Felipe
+123456
+
+---------------------------------------------
+
+Abra o phpMyAdmin (geralmente acessível em http://localhost/phpmyadmin/ no WampServer).
+
+No painel esquerdo, clique em Banco de Dados e crie um novo banco de dados com o nome que você usou no seu projeto Django (sistema).
+
+Após criar o banco de dados, clique nele na lista de bancos de dados à esquerda.
+
+Vá até a aba Importar.
+
+Selecione o arquivo .sql que esta dentro da pasta do seu projeto.
+
+Clique em Executar para importar os dados.

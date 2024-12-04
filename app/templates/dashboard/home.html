@@ -1,0 +1,34 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+    <h1>Painel de Controle</h1>
+    <div>
+        <h2>Visão Geral</h2>
+        <p>Total de Recursos: {{ total_resources }}</p>
+    </div>
+    <div>
+        <h2>Tipos de Recursos</h2>
+        <div id="resourceChart" style="width: 600px; height: 400px;"></div>
+        <div id="resourceTypeLabels" style="display:none;">{{ resource_type_labels_json }}</div>
+        <div id="resourceTypeData" style="display:none;">{{ resource_type_data_json }}</div>
+    </div>
+    <hr>
+    <!-- Gestão de Recursos -->
+    <h2>Gestão de Recursos Internos</h2>
+    <a href="{% url 'add_resource' %}">Adicionar Novo Recurso</a>
+    <ul>
+        {% for resource in resources %}
+            <li>{{ resource.name }} - {{ resource.type }} - {{ resource.description }}
+                {% if request.user.is_staff %}
+                    <a href="{% url 'edit_resource' resource.id %}">Editar</a> |
+                    <a href="{% url 'delete_resource' resource.id %}">Remover</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    Você não tem acesso a essa área!
+{% endif %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+    <h1>Adicionar Novo Recurso</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Adicionar Recurso</button>
+    </form>
+    <a href="{% url 'dashboard' %}">Voltar</a>
+{% else %}
+    Você não tem acesso a essa área!
+{% endif %}
+
+{% endblock %}
